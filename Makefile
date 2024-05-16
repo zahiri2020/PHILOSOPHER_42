@@ -17,19 +17,21 @@ LIBFT = libft/libft.a
 all : $(DIR_LIB) $(NAME) 
 
 %.o : %.c philosopher.h
-	$(CC) $(FLAGS) -c $< -o $@
+	@$(CC) $(FLAGS) -c $< -o $@
 
 $(NAME) : $(OBJ)
-		$(CC) -lft -L$(DIR_LIB) $< -o $(NAME)
+		@$(CC)  -fsanitize=thread -g -lft -L$(DIR_LIB) $< -o $(NAME)
 
 $(DIR_LIB):
-			make -C $(DIR_LIB)
+		@make -C $(DIR_LIB)
 clean :
-	make -C $(DIR_LIB) clean
-	$(RM) $(OBJ)
+	@make -C $(DIR_LIB) clean
+	@$(RM) $(OBJ)
 
 fclean : clean
-	make -C $(DIR_LIB) fclean
-	$(RM) $(NAME)
+	@make -C $(DIR_LIB) fclean
+	@$(RM) $(NAME)
+
+re : fclean all
 
 .PHONY : $(DIR_LIB)
