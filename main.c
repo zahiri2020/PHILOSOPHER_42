@@ -6,7 +6,7 @@
 /*   By: ezahiri <ezahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 14:11:46 by ezahiri           #+#    #+#             */
-/*   Updated: 2024/05/16 16:28:38 by ezahiri          ###   ########.fr       */
+/*   Updated: 2024/05/18 16:11:47 by ezahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ int	check(char *s, int a)
 	}
 	return (0);
 }
-
-void	parse(char **av, int ac)
+#include <stdbool.h>
+bool 	parse(char **av, int ac)
 {
 	int	i;
-
+	
 	i = 0;
 	if (ac == 6 || ac == 5)
 	{
@@ -53,3 +53,22 @@ int	main(int ac, char **av)
 {
 	parse(av, ac);
 }
+
+/*
+	struct : t_list
+		void *content;
+		struct s_list	*next;
+		struct s_list	*last;
+	struct : settings
+		-> number of philos
+		-> time_to_die
+		-> time_to_eat
+		-> time_to_sleep
+		-> number_of_meals	[optional]
+	struct : object
+		-> philos
+		-> settings
+	struct : philo
+		-> id
+		-> ...
+*/
