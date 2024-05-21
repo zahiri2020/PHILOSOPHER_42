@@ -4,7 +4,8 @@ FLAGS = -Wall -Wextra -Werror
 
 RM = rm -f
 
-SRC = main.c
+SRC = main.c \
+	init_philo.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -17,10 +18,10 @@ LIBFT = libft/libft.a
 all : $(DIR_LIB) $(NAME) 
 
 %.o : %.c philosopher.h
-	@$(CC) $(FLAGS) -c $< -o $@
+	@$(CC) $(FLAGS) -c $<
 
 $(NAME) : $(OBJ)
-		@$(CC)  -fsanitize=thread -g -lft -L$(DIR_LIB) $< -o $(NAME)
+		@$(CC)  -lft -L$(DIR_LIB) $(OBJ) -o $(NAME)
 
 $(DIR_LIB):
 		@make -C $(DIR_LIB)

@@ -6,7 +6,7 @@
 /*   By: ezahiri <ezahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 14:11:46 by ezahiri           #+#    #+#             */
-/*   Updated: 2024/05/18 16:11:47 by ezahiri          ###   ########.fr       */
+/*   Updated: 2024/05/21 20:50:48 by ezahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,37 +21,53 @@ int	check(char *s, int a)
 	{
 		if (s[i] > '9' || s[i] < '0')
 		{
-			ft_putstr_fd("->invalid argument\n", 2);
+			ft_putstr_fd("invalid argument\n", 2);
 			return (-1);
 		}
 		i++;
 	}
 	if (a == 1 && (ft_atoi(s) == 0 || ft_atoi(s) > 200))
 	{
-		ft_putstr_fd("nombre of philo invalid\n", 2);
+		ft_putstr_fd("numbre of philo invalid\n", 2);
 		return (-1);
 	}
 	return (0);
 }
-#include <stdbool.h>
-bool 	parse(char **av, int ac)
+
+int	parse(char **av, int ac)
 {
 	int	i;
-	
+
 	i = 0;
 	if (ac == 6 || ac == 5)
 	{
 		while (av[++i])
 			if (check(av[i], i) == -1)
-				exit(1);
+				return (-1);
 	}
 	else
-		exit(1);
+	{
+		ft_putstr_fd("error numbre of arguments", 2);
+		return (-1);
+	}
+	return (0);
 }
 
 int	main(int ac, char **av)
 {
-	parse(av, ac);
+	t_philo	*p;
+	int		len;
+
+	p = NULL;
+	len = 0;
+	if (-1 == parse(av, ac))
+		return (1);
+	len = ft_atoi(av[1]);
+	p = (t_philo *)malloc (sizeof(t_philo) * len);
+	if (!p)
+		return (1);
+	init_philo(p, av);
+	return (0);
 }
 
 /*
