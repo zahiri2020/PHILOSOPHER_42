@@ -5,7 +5,7 @@ FLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
 SRC = main.c \
-	init_philo.c
+	init_philo.c get_time.c create_philo.c routine.c
 
 OBJ = $(SRC:.c=.o)
 
