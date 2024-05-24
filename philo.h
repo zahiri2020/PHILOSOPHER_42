@@ -6,7 +6,7 @@
 /*   By: ezahiri <ezahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 14:03:23 by ezahiri           #+#    #+#             */
-/*   Updated: 2024/05/23 20:33:52 by ezahiri          ###   ########.fr       */
+/*   Updated: 2024/05/24 22:43:15 by ezahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_philo
 	int				id;
 	int				flag;
 	t_data			*info;
+	long long 		last_eat;
 	pthread_mutex_t	*right_fork;
 	pthread_mutex_t	*left_fork;
 	pthread_t		philo;

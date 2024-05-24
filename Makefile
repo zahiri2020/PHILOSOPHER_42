@@ -1,4 +1,4 @@
-CC = cc
+CC = cc #-fsanitize=thread -g -Wunreachable-code
 
 FLAGS = -Wall -Wextra -Werror
 

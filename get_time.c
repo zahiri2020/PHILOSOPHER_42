@@ -6,7 +6,7 @@
 /*   By: ezahiri <ezahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 22:34:40 by ezahiri           #+#    #+#             */
-/*   Updated: 2024/05/22 22:54:06 by ezahiri          ###   ########.fr       */
+/*   Updated: 2024/05/23 22:49:34 by ezahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	ft_sleep(int t)
 	{
 		if (get_time() - start >= t)
 			return ;
+		// usleep(100);
 	}
 }
 // int main ()

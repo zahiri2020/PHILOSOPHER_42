@@ -6,7 +6,7 @@
 /*   By: ezahiri <ezahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:25:15 by ezahiri           #+#    #+#             */
-/*   Updated: 2024/05/22 22:36:37 by ezahiri          ###   ########.fr       */
+/*   Updated: 2024/05/24 21:26:29 by ezahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,13 @@ void	eating(t_philo *p)
 	char	*s2;
 
 	s1 = "has taken a fork";
-	s2 = " is eating";
+	s2 = "is eating";
 	pthread_mutex_lock (p->right_fork);
 	printf ("%lld  %d %s \n", get_time() - p->info->t_start, p->id, s1);
 	pthread_mutex_lock (p->left_fork);
 	printf ("%lld  %d %s \n", get_time() - p->info->t_start, p->id, s1);
 	printf ("%lld  %d %s \n", get_time() - p->info->t_start, p->id, s2);
+	p->last_eat = get_time(); 
 	ft_sleep (p->info->t_eat);
 	pthread_mutex_unlock (p->right_fork);
 	pthread_mutex_unlock (p->left_fork);
