@@ -6,7 +6,7 @@
 /*   By: ezahiri <ezahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 22:34:40 by ezahiri           #+#    #+#             */
-/*   Updated: 2024/05/23 22:49:34 by ezahiri          ###   ########.fr       */
+/*   Updated: 2024/05/30 20:27:19 by ezahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,16 @@ long	long	get_time(void)
 		return ((t.tv_sec * 1000) + (t.tv_usec / 1000));
 }
 
-void	ft_sleep(int t)
+int	ft_check(t_philo *p)
+{
+	int	flag;
+
+	pthread_mutex_lock (&p->info->data_s);
+	flag = p->info->flag;
+	pthread_mutex_unlock (&p->info->data_s);
+	return (flag);
+}
+void	ft_sleep(int t, t_philo *p)
 {
 	long long	start;
 
@@ -31,10 +40,6 @@ void	ft_sleep(int t)
 	{
 		if (get_time() - start >= t)
 			return ;
-		// usleep(100);
+		usleep(100);
 	}
 }
-// int main ()
-// {
-// 	ft_sleep(200);
-// }

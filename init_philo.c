@@ -6,7 +6,7 @@
 /*   By: ezahiri <ezahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 18:58:55 by ezahiri           #+#    #+#             */
-/*   Updated: 2024/05/23 20:34:04 by ezahiri          ###   ########.fr       */
+/*   Updated: 2024/05/30 10:28:46 by ezahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	init_data(t_data *info, t_philo *phils, int i)
 {
 	pthread_mutex_init(info->forks + i, NULL);
+	pthread_mutex_init(&phils->philo_s, NULL);
 	phils->id  = i + 1;
 	phils->info = info;
 	phils->right_fork = info->forks + i;
@@ -34,11 +35,14 @@ int	init_philo(t_philo *p, char **av)
 	info = (t_data *)malloc (sizeof (t_data));
 	if (!info)
 		return (free(p), -1);
+	pthread_mutex_init(&info->write, NULL);
+	pthread_mutex_init(&info->data_s, NULL);
 	info->n_philo = ft_atoi (av[1]);
 	info->t_dead = ft_atoi(av[2]);
 	info->t_eat = ft_atoi (av[3]);
 	info->t_sleep = ft_atoi(av[4]);
 	info->n_mails = ft_atoi(av[5]);
+	info->flag = 0;
 	info->forks = malloc (sizeof (pthread_mutex_t) * info->n_philo);
 	if (!info->forks)
 		return (free(p), free(info), -1);
