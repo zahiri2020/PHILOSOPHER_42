@@ -6,7 +6,7 @@
 /*   By: ezahiri <ezahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 22:34:40 by ezahiri           #+#    #+#             */
-/*   Updated: 2024/05/30 20:27:19 by ezahiri          ###   ########.fr       */
+/*   Updated: 2024/05/31 10:53:28 by ezahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,11 @@ int	ft_check(t_philo *p)
 void	ft_sleep(int t, t_philo *p)
 {
 	long long	start;
+	int			flag;
 
 	start = get_time();
-	while (1)
+
+	while (ft_check(p) == 0)
 	{
 		if (get_time() - start >= t)
 			return ;

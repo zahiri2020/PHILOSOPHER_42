@@ -6,7 +6,7 @@
 /*   By: ezahiri <ezahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:25:15 by ezahiri           #+#    #+#             */
-/*   Updated: 2024/05/30 13:10:07 by ezahiri          ###   ########.fr       */
+/*   Updated: 2024/05/31 10:58:52 by ezahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ void	eating(t_philo *p)
 	char	*s1;
 	char	*s2;
 	int		flag;
-	
-	pthread_mutex_lock (&p->info->data_s);
+
+	pthread_mutex_lock (&p->philo_s);
 	flag = p->info->flag;
-	pthread_mutex_unlock (&p->info->data_s);
+	pthread_mutex_unlock (&p->philo_s);
 	if (flag == 1)
 		return ;
 	pthread_mutex_lock (p->right_fork);
@@ -41,9 +41,9 @@ void	sleeping(t_philo *p)
 	char	*s;
 	int		flag;
 
-	pthread_mutex_lock (&p->info->data_s);
+	pthread_mutex_lock (&p->philo_s);
 	flag = p->info->flag;
-	pthread_mutex_unlock (&p->info->data_s);
+	pthread_mutex_unlock (&p->philo_s);
 	if (flag == 1)
 		return ;
 	pthread_mutex_lock(&p->info->write);
@@ -57,9 +57,9 @@ void	thinking(t_philo *p)
 	char	*s;
 	int		flag;
 
-	pthread_mutex_lock (&p->info->data_s);
+	pthread_mutex_lock (&p->philo_s);
 	flag = p->info->flag;
-	pthread_mutex_unlock (&p->info->data_s);
+	pthread_mutex_unlock (&p->philo_s);
 	if (flag == 1)
 		return ;
 	pthread_mutex_lock(&p->info->write);

@@ -6,7 +6,7 @@
 /*   By: ezahiri <ezahiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:25:32 by ezahiri           #+#    #+#             */
-/*   Updated: 2024/05/30 15:50:52 by ezahiri          ###   ########.fr       */
+/*   Updated: 2024/05/31 10:47:39 by ezahiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void *philo_f(void *data)
 	pthread_mutex_lock (&p->philo_s);
 	p->last_eat = get_time();
 	pthread_mutex_unlock (&p->philo_s);
-	if (p->id % 2 == 0)
-		ft_sleep(p->info->t_eat / 2, p);
+	if (p->id % 2 == 1)
+		ft_sleep(p->info->t_eat, p);
 	if (p->info->n_mails < 0)
 	{
 		while (1)
